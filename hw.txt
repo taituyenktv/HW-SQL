@@ -1,0 +1,3 @@
+SELECT * FROM `tbl_sinhvien` WHERE tuoi >20 && tuoi <30;
+SELECT * FROM `tbl_sinhvien` WHERE tuoi <20 || tuoi >30;
+SELECT * FROM `tbl_sinhvien` WHERE tuoi =(SELECT MAX(tuoi) FROM `tbl_sinhvien`);
