@@ -1,3 +1,25 @@
-SELECT * FROM `tbl_sinhvien` WHERE tuoi >20 && tuoi <30;
-SELECT * FROM `tbl_sinhvien` WHERE tuoi <20 || tuoi >30;
-SELECT * FROM `tbl_sinhvien` WHERE tuoi =(SELECT MAX(tuoi) FROM `tbl_sinhvien`);
+CREATE DATABASE quanlysinhdiem;
+
+CREATE TABLE tbl_sinhvien (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    ten varchar (255) NOT NULL,
+    tuoi int,
+    gioiTinh int,
+    maLop int );
+CREATE TABLE tbl_giaovien (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    ten varchar (255) NOT NULL,
+    tuoi int,
+    gioitinh int,
+    soNamKN int
+);
+CREATE TABLE tbl_diem (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    maSV int,
+    diemToan float,
+    diemLy float,
+    diemHoa float
+);    
+INSERT INTO tbl_sinhvien (ten, tuoi, gioiTinh ,maLop) VALUES ('Tài Tuyền', 28, 1 , 19),('Ma Thị Dung ', 33, 0 , 16),('Tài Tấn', 32, 1 , 9),('Nguyễn Thị Hạnh ', 28, 0 , 18),('Ngô Văn Tuyền', 32, 1 , 5),('Hoàng Thị Tuyết', 28, 0 , 17),('Tài Cao', 22, 1 , 8),('Tài Quân', 29, 1 , 2),('Tài Quân', 31, 1 , 3),('Tài Thắng', 20, 1 , 19);
+INSERT INTO tbl_giaovien (ten, tuoi, gioiTinh ,soNamKN) VALUES ('Ngọc Quang', 44, 1 , 19),('Nguyễn Thị Huế', 35, 0 , 6),('Đinh Trọng Đỉnh', 32, 1 , 9),('Nguyễn Thị Lan ', 30, 0 , 18),('Ngô Văn Thành', 32, 1 , 5),('Hoàng Thị Nguyệt', 28, 0 , 17),('Như Văn Cao', 50, 1 , 28),('Tài Trực', 29, 1 , 2),('Tài Quân', 31, 1 , 3),('Nguyễn Văn Thắng', 39, 1 , 15);    
+INSERT INTO tbl_diem (maSV, diemToan, diemLy, diemHoa) VALUES (202305001, 8 , 8 , 9),(202305002, 9 , 9 , 9),(202305003, 5 , 5 , 4),(202305004, 7 , 8 , 9),(202305005, 7 , 8 , 9),(202305006, 7 , 8 , 9),(202305007, 2 , 4 , 5),(202305008, 7 , 5 , 9),(202305009, 7 , 8 , 5),(202305010, 8 , 6 , 9);
