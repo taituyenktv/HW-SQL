@@ -1,0 +1,85 @@
+UPDATE  mã sinh viên thành số id 
+
+UPDATE `tbl_diem` SET `maSV` = '1' WHERE `tbl_diem`.`id` = 1;
+UPDATE `tbl_diem` SET `maSV` = '2' WHERE `tbl_diem`.`id` = 2;
+UPDATE `tbl_diem` SET `maSV` = '3' WHERE `tbl_diem`.`id` = 3;
+UPDATE `tbl_diem` SET `maSV` = '4' WHERE `tbl_diem`.`id` = 4;
+UPDATE `tbl_diem` SET `maSV` = '5' WHERE `tbl_diem`.`id` = 5;
+UPDATE `tbl_diem` SET `maSV` = '6' WHERE `tbl_diem`.`id` = 6;
+UPDATE `tbl_diem` SET `maSV` = '7' WHERE `tbl_diem`.`id` = 7;
+UPDATE `tbl_diem` SET `maSV` = '8' WHERE `tbl_diem`.`id` = 8;
+UPDATE `tbl_diem` SET `maSV` = '9' WHERE `tbl_diem`.`id` = 9;
+UPDATE `tbl_diem` SET `maSV` = '10' WHERE `tbl_diem`.`id` = 10;
+
+Join bảng bằng câu lệnh:
+SELECT tbl_giaovien.ten FROM tbl_giaovien JOIN tbl_lop ON tbl_giaovien.id = tbl_lop.giaoVien_id WHERE tbl_lop.tenlop LIKE "%Toán%";SELECT tbl_giaovien.*, tbl_lop.* FROM tbl_giaovien JOIN tbl_lop ON tbl_giaovien.id = tbl_lop.giaoVien_id WHERE soTinChi >2;
+SELECT tbl_giaovien.*, tbl_lop.* FROM tbl_giaovien JOIN tbl_lop ON tbl_giaovien.id = tbl_lop.giaoVien_id WHERE tbl_giaovien.id =5;
+SELECT tbl_lop.* FROM tbl_lop JOIN tbl_giaovien ON tbl_lop.giaoVien_id = tbl_giaovien.id WHERE tbl_giaovien.ten LIKE "%Đỉnh";
+
+Bang moi QLTT
+CREATE DATABASE QLTT;
+CREATE TABLE tbl_khoa (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    maKhoa varchar (50) NOT NULL,
+    tenKhoa varchar (50) NOT NULL,
+    sdt varchar (11) NOT NULL
+    
+);
+CREATE TABLE tbl_giangVien (
+        id int PRIMARY KEY AUTO_INCREMENT,
+    maGV varchar (50) NOT NULL,
+    tenGV varchar (50)NOT NULL,
+    luong int NOT NULL,
+    maKhoa varchar (50) NOT NULL
+
+);
+CREATE TABLE tbl_sinhVien (
+        id int PRIMARY KEY AUTO_INCREMENT,
+    maSV varchar (50)NOT NULL,
+    tenSV varchar (50) NOT NULL,
+    maKhoa varchar (50)NOT NULL,
+    namSinh int NOT NULL,
+    queQuan varchar (100) NOT NULL
+
+);
+CREATE TABLE tbl_deTai (
+        id int PRIMARY KEY AUTO_INCREMENT,
+    maDT varchar (50) NOT NULL,
+    tenDT varchar (100) NOT NULL,
+    kinhPhi int NOT NULL,
+    noiThucTap varchar (50) NOT NULL
+
+    
+);
+CREATE TABLE tbl_huongDan (
+        id int PRIMARY KEY AUTO_INCREMENT,
+    maSV varchar (50) NOT NULL,
+    maDT varchar (50) NOT NULL,
+    maGV varchar (50) NOT NULL,
+    ketQua int
+
+);
+INSERT INTO tbl_khoa (maKhoa, tenKhoa, sdt) VALUES ('Geo' ,'Dia Ly','3855413'),('Math' ,'Toan Hoc','3855411'),('Bio' ,'Cong Nghe Sinh Hoc','3855412');
+INSERT INTO tbl_giangVien (maGV, tenGV, luong, maKhoa) VALUES ('11','Thanh Binh',700,'Geo'),('12','Thu Huong',500,'Math'),('13','Chu Vinh',650,'Geo'),('14','Le Thi Ly',500,'Bio'),('15','Tran Son',900,'Math');
+INSERT INTO tbl_sinhVIen (maSV, tenSV, maKhoa, namSinh, queQuan) VALUES ('1','Le Van Son','Bio',1990,'Nghe An'),('2','Nguyen THi Mai','Geo',1990,'Thanh Hoa'),('3','Bui Xuan Duc','Math',1992,'Ha Noi'),('4','Nguyen Van Tung','Bio',1990,'Ha Tinh'),('5','Le Khanh Linh','Bio',1989,'Ha Nam'),('6','Tran Khac Trong','Geo',1991,'Ninh Binh'),('7','Le Hong Van','Math',1990,'Ha Noi'),('8','Hoang Anh Duc','Bio',1992,'Nghe An');
+INSERT INTO tbl_deTai (maDT, tenDT, kinhPhi, noiThucTap) VALUES ('Dt01','GIS',100,'Nghe An'),('Dt02','ARC',500,'Vinh Phuc'),('Dt03','Spataial DB',100,'Ha Tinh'),('Dt04','MAP',300,'Quang Binh');
+INSERT INTO tbl_huongDan (maSV, maDT, maGV, ketQua) VALUES ('1','Dt01','13',8),('2','Dt03','14',0),('3','Dt03','12',10),('5','Dt04','14',7),('6','Dt01','13',8),('7','Dt04','11',10),('8','Dt03','15',6);
+
+Cau 1 :
+SELECT tbl_giangvien.maGV,tbl_giangvien.tenGV,tbl_khoa.tenKhoa FROM tbl_giangvien JOIN tbl_khoa ON tbl_giangvien.maKhoa = tbl_khoa.maKhoa;
+Cau 2 :
+SELECT tbl_giangvien.maGV,tbl_giangvien.tenGV,tbl_khoa.tenKhoa FROM tbl_giangvien JOIN tbl_khoa ON tbl_giangvien.maKhoa = tbl_khoa.maKhoa WHERE tbl_khoa.tenKhoa = "Dia Ly";
+Cau 3 : 
+SELECT COUNT(*) FROM tbl_sinhvien JOIN tbl_khoa ON tbl_sinhvien.maKhoa = tbl_khoa.maKhoa WHERE tbl_sinhvien.maKhoa = 'Bio'
+Cau 4:
+SELECT tbl_sinhvien.maSV,tbl_sinhvien.tenSV, tbl_sinhvien.namSinh FROM tbl_sinhvien JOIN tbl_khoa ON tbl_sinhvien.maKhoa = tbl_khoa.maKhoa WHERE tbl_sinhvien.maKhoa = 'Math';
+Cau 5 :
+SELECT COUNT(*) FROM tbl_giangvien JOIN tbl_khoa ON tbl_giangvien.maKhoa = tbl_khoa.maKhoa WHERE tbl_giangvien.maKhoa = 'Bio'
+Cau 6 : 
+SELECT * FROM tbl_sinhvien WHERE NOT EXISTS (SELECT * FROM tbl_huongdan WHERE tbl_huongdan.maSV = tbl_sinhvien.maSv)
+Cau 7 :
+SELECT tbl_khoa.maKhoa ,tbl_khoa.tenKhoa, COUNT(*) FROM tbl_giangvien JOIN tbl_khoa ON tbl_giangvien.maKhoa = tbl_khoa.maKhoa 
+GROUP BY tbl_khoa.maKhoa;
+câu 8 :
+SELECT tbl_khoa.sdt FROM tbl_sinhvien INNER JOIN tbl_khoa ON tbl_sinhvien.maKhoa = tbl_khoa.maKhoa
+WHERE tbl_sinhvien.tenSV = 'Nguyễn Văn A';
