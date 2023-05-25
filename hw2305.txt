@@ -1,21 +1,3 @@
-UPDATE  mã sinh viên thành số id 
-
-UPDATE `tbl_diem` SET `maSV` = '1' WHERE `tbl_diem`.`id` = 1;
-UPDATE `tbl_diem` SET `maSV` = '2' WHERE `tbl_diem`.`id` = 2;
-UPDATE `tbl_diem` SET `maSV` = '3' WHERE `tbl_diem`.`id` = 3;
-UPDATE `tbl_diem` SET `maSV` = '4' WHERE `tbl_diem`.`id` = 4;
-UPDATE `tbl_diem` SET `maSV` = '5' WHERE `tbl_diem`.`id` = 5;
-UPDATE `tbl_diem` SET `maSV` = '6' WHERE `tbl_diem`.`id` = 6;
-UPDATE `tbl_diem` SET `maSV` = '7' WHERE `tbl_diem`.`id` = 7;
-UPDATE `tbl_diem` SET `maSV` = '8' WHERE `tbl_diem`.`id` = 8;
-UPDATE `tbl_diem` SET `maSV` = '9' WHERE `tbl_diem`.`id` = 9;
-UPDATE `tbl_diem` SET `maSV` = '10' WHERE `tbl_diem`.`id` = 10;
-
-Join bảng bằng câu lệnh:
-SELECT tbl_giaovien.ten FROM tbl_giaovien JOIN tbl_lop ON tbl_giaovien.id = tbl_lop.giaoVien_id WHERE tbl_lop.tenlop LIKE "%Toán%";SELECT tbl_giaovien.*, tbl_lop.* FROM tbl_giaovien JOIN tbl_lop ON tbl_giaovien.id = tbl_lop.giaoVien_id WHERE soTinChi >2;
-SELECT tbl_giaovien.*, tbl_lop.* FROM tbl_giaovien JOIN tbl_lop ON tbl_giaovien.id = tbl_lop.giaoVien_id WHERE tbl_giaovien.id =5;
-SELECT tbl_lop.* FROM tbl_lop JOIN tbl_giaovien ON tbl_lop.giaoVien_id = tbl_giaovien.id WHERE tbl_giaovien.ten LIKE "%Đỉnh";
-
 Bang moi QLTT
 CREATE DATABASE QLTT;
 CREATE TABLE tbl_khoa (
